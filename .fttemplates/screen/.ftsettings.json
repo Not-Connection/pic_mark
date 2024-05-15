@@ -1,0 +1,16 @@
+{
+  "absolutePath": true,
+  "overwriteExistingFiles": "always",
+  "omitFTName": true,
+  "omitParentDirectory": true,
+  "customVariables": [
+    "screenPrefix=>screen_prefix_(end_with_dot)",
+    "screenName=>screen_name_(space_is_allowed)"
+  ],
+  "openFilesWhenDone": [
+    "lib/app/navigation/b.routes.dart",
+    "lib/app/navigation/c.route_map.dart",
+    "lib/xtras/a.data.dart",
+    "lib/xtras/b.ctrl.dart"
+  ]
+}

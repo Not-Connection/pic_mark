@@ -1,0 +1,17 @@
+{
+  "absolutePath": true,
+  "overwriteExistingFiles": "always",
+  "omitFTName": true,
+  "omitParentDirectory": true,
+  "customVariables": [
+    "domainPrefix=>domain_prefix_(end_with_dot)",
+    "domainName=>domain_name_(space_is_allowed)"
+  ],
+  "openFilesWhenDone": [
+    "lib/app/inits.dart",
+    "lib/app/mocks.dart",
+    "lib/xtras/c.prov.dart",
+    "lib/xtras/d.serv.dart",
+    "lib/xtras/e.repo.dart"
+  ]
+}
