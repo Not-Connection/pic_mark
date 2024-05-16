@@ -8,5 +8,6 @@ class RouteMap {
     Routes.sampleSatu: (RouteData data) => const SampleSatuView(),
     Routes.sampleDua: (RouteData data) => const SampleDuaView(),
     Routes.sampleTiga: (RouteData data) => const SampleTigaView(),
+    Routes.mark: (RouteData data) => const MarkView(),
   };
 }
