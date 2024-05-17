@@ -15,6 +15,53 @@ class MarkCtrl {
     }
   }
 
+  Future<void> shareFile(BuildContext context) async {
+    final directory = await getApplicationDocumentsDirectory();
+    final uid = const Uuid().v1();
+
+    final file = File('${directory.path}/$uid.jpg');
+    await file.writeAsBytes(_dt.rxWatermarkedImage.st!).then(
+          (value) => logx.w(
+            value.path.toString(),
+          ),
+        );
+    final result = await Share.shareXFiles(
+      [XFile(file.path)],
+      text: 'Check this out',
+    );
+
+    if (result.status == ShareResultStatus.success) {
+      // ignore: use_build_context_synchronously
+      _showSnackBar(context, 'Thank you for sharing the picture!');
+    }
+  }
+
+  void _showSnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(message),
+      duration: const Duration(seconds: 2),
+    ));
+  }
+
+  void showImagePreview(String name, Uint8List imageBytes) {
+    nav.toDialog(
+      CupertinoAlertDialog(
+        title: Text(
+          name,
+        ),
+        content: Padding(
+          padding: const EdgeInsets.only(top: 10),
+          child: SizedBox(
+            height: 300,
+            child: Image.memory(
+              imageBytes,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget imagePickerDialog() {
     return AlertDialog(
       title: const Text('Pick a source'),
@@ -82,8 +129,8 @@ class MarkCtrl {
     await ImageWatermark.addImageWatermark(
       originalImageBytes: imageBytes, //image bytes
       waterkmarkImageBytes: watermarkBytes, //watermark img bytes
-      imgHeight: (wtmHeight / 10).floor(), //watermark img height
-      imgWidth: (wtmWidth / 10).floor(), //watermark img width
+      imgHeight: (wtmHeight / 3).floor(), //watermark img height
+      imgWidth: (wtmWidth / 3).floor(), //watermark img width
       dstY: 5, //watermark position Y
       dstX: 5, //watermark position X
     ).then(
@@ -91,5 +138,37 @@ class MarkCtrl {
         _dt.rxWatermarkedImage.st = value;
       },
     );
+  }
+
+  Future<void> saveWatermarkedImageToLocal() async {
+    final directory = await getApplicationDocumentsDirectory();
+    final uid = const Uuid().v1();
+    final file = File('${directory.path}/$uid.jpg');
+    await file.writeAsBytes(_dt.rxWatermarkedImage.st!).then(
+          (value) => logx.w(
+            value.path.toString(),
+          ),
+        );
+  }
+
+  Widget showPreviewWatermark() {
+    if (_dt.rxLogoWatermark.st != null || _dt.rxTextWaterMark.text.isNotEmpty) {
+      if (_dt.rxLogoWatermark.st != null) {
+        return SizedBox(
+          width: 100,
+          child: Image.file(
+            File(_dt.rxLogoWatermark.st!.path),
+          ),
+        );
+      }
+      if (_dt.rxTextWaterMark.text.isNotEmpty) {
+        return Text(
+          _dt.rxTextWaterMark.text,
+          style: const TextStyle(color: Colors.black),
+        );
+      }
+      return const SizedBox.shrink();
+    }
+    return const SizedBox.shrink();
   }
 }

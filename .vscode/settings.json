@@ -18,8 +18,6 @@
     "*.vscode.*": true,
     "*analysis_options": true,
     "*analysis_options.*": true,
-    "*android": true,
-    "*android.*": true,
     "*build": true,
     "*build.*": true,
     "*ios": true,

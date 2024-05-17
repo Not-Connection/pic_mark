@@ -14,6 +14,7 @@ class MarkView extends StatelessWidget {
         () => _dt.rxPreImage.st == null
             ? const SizedBox.shrink()
             : BottomNavigationBar(
+                backgroundColor: Colors.grey.withOpacity(0.1),
                 currentIndex: _dt.rxCurrentIndex.st,
                 onTap: (value) {
                   _dt.rxCurrentIndex.st = value;
@@ -21,8 +22,14 @@ class MarkView extends StatelessWidget {
                 },
                 selectedItemColor: Theme.of(context).colorScheme.primary,
                 items: const [
-                  BottomNavigationBarItem(icon: Icon(Icons.text_fields), label: 'Text'),
-                  BottomNavigationBarItem(icon: Icon(Icons.image), label: 'Logo'),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.text_fields),
+                    label: 'Text',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.image),
+                    label: 'Logo',
+                  ),
                 ],
               ),
       ),

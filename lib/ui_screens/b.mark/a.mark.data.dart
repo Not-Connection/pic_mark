@@ -12,12 +12,20 @@ class MarkData {
   final rxLogoWatermark = RM.inject<XFile?>(() => null);
   final rxWatermarkedImage = RM.inject<Uint8List?>(() => null);
 
+  final rxPreImageW = RM.inject(() => 0);
+  final rxPreImageH = RM.inject(() => 0);
+
   final rxForm = RM.injectForm(
     autovalidateMode: AutovalidateMode.onUserInteraction,
     submit: () async {
       await _ct.applyTextWatermark();
     },
   );
+
+  final rxWtmLogoHeight = RM.inject<double>(() => 0.0);
+  final rxWtmLogoWidth = RM.inject<double>(() => 0.0);
+  final rxWtmLogoDx = RM.inject<double>(() => 0.0);
+  final rxWtmLogoDy = RM.inject<double>(() => 0.0);
 
   final rxCurrentIndex = RM.inject<int>(() => 0);
 
