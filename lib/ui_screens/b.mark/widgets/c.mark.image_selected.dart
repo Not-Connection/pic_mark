@@ -23,7 +23,11 @@ class MarkImageSelected extends ReactiveStatelessWidget {
                       Image.file(
                         File(_dt.rxPreImage.st!.path),
                       ),
-                      _ct.showPreviewWatermark(),
+                      Positioned(
+                        top: 5,
+                        left: 5,
+                        child: _ct.showPreviewWatermark(),
+                      ),
                     ],
                   ),
                 ),
@@ -129,13 +133,6 @@ class MarkImageLogo extends StatelessWidget {
               ? const SizedBox.shrink()
               : Column(
                   children: [
-                    const SizedBoxH(10),
-                    SizedBox(
-                      width: 100,
-                      child: Image.file(
-                        File(_dt.rxLogoWatermark.st!.path),
-                      ),
-                    ),
                     const SizedBoxH(10),
                     ElevatedButton.icon(
                       label: const Text('Apply Watermark'),

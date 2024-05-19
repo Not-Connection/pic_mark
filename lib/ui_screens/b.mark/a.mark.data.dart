@@ -33,6 +33,22 @@ class MarkData {
     validators: [Validate.isNotEmpty],
   );
 
+  final rxTextHeight = RM.injectTextEditing(
+    validators: [Validate.isNotEmpty, Validate.isNumeric],
+  );
+
+  final rxTextWidth = RM.injectTextEditing(
+    validators: [Validate.isNotEmpty, Validate.isNumeric],
+  );
+
+  final rxTextDx = RM.injectTextEditing(
+    validators: [Validate.isNotEmpty, Validate.isNumeric],
+  );
+
+  final rxTextDy = RM.injectTextEditing(
+    validators: [Validate.isNotEmpty, Validate.isNumeric],
+  );
+
   final rxIsText = RM.inject<bool>(() => false);
 
   final rxIsImage = RM.inject<bool>(() => false);

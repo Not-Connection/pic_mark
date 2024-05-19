@@ -155,7 +155,7 @@ class MarkCtrl {
     if (_dt.rxLogoWatermark.st != null || _dt.rxTextWaterMark.text.isNotEmpty) {
       if (_dt.rxLogoWatermark.st != null) {
         return SizedBox(
-          width: 100,
+          width: 80,
           child: Image.file(
             File(_dt.rxLogoWatermark.st!.path),
           ),
